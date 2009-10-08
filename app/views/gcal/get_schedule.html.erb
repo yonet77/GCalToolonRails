@@ -4,7 +4,7 @@
 <% @lists.each_with_index do |e, idx| %>
   (#<%= idx %>) タイトル：<%= e[:title] %><br>
   説明：<%= e[:desc] %><br>
-  期間：<%= e[:st].localtime.strftime("%Y/%m/%d %H:%M") %> ～ <%= e[:en].localtime.strftime("%Y/%m/%d %H:%M") %><br>
-  時間：<%= (e[:en]-e[:st])/(60*60) %>
+  期間：<%= e[:st_date] + " " + e[:st_time] %> ～ <%= e[:en_date] + " " + e[:en_time] %><br>
+  時間：<%= e[:time] %>
   <hr>
 <% end %>

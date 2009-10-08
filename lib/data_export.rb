@@ -8,9 +8,9 @@ module DataExport
     csv_text = ""
 
     csv_text = FasterCSV.generate do |csv|
-      csv << ["タイトル", "開始", "終了", "時間"]
+      csv << ["コード","タイトル", "開始日", "開始", "終了", "時間"]
       lists.each do |list|
-        csv << [list[:title], list[:st].to_time.localtime.strftime("%Y/%m/%d %H:%M"), list[:en].to_time.localtime.strftime("%Y/%m/%d %H:%M"),(list[:en].to_time-list[:st].to_time)/(60*60) ]
+        csv << [list[:code], list[:title], list[:st_date], list[:st].to_time.localtime.strftime("%Y/%m/%d %H:%M"), list[:en].to_time.localtime.strftime("%Y/%m/%d %H:%M"),(list[:en].to_time-list[:st].to_time)/(60*60) ]
       end
     end
 

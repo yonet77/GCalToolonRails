@@ -42,11 +42,25 @@ module GoogleCal
     schedules = []
     events.each do |e|
       hash = HashWithIndifferentAccess.new
-      hash[:title] = e.title
+      if e.title =~ /\//
+      	hash[:code] = e.title.split(/\//,2)[0]
+      	hash[:title] = e.title.split(/\//,2)[1]
+      else
+      	hash[:code] = ""
+      	hash[:title] = e.title
+      end
       hash[:desc] = e.desc
       hash[:where] = e.where
+      
+      hash[:st_date] = e.st.localtime.strftime("%Y/%m/%d %H:%M").split(/ /,2)[0]
+      hash[:st_time] = e.st.localtime.strftime("%Y/%m/%d %H:%M").split(/ /,2)[1]
       hash[:st] = e.st
+      
+      hash[:en_date] = e.en.localtime.strftime("%Y/%m/%d %H:%M").split(/ /,2)[0]
+      hash[:en_time] = e.en.localtime.strftime("%Y/%m/%d %H:%M").split(/ /,2)[1]
       hash[:en] = e.en
+      
+      hash[:time] = (e.en-e.st) / (60*60)
       
       schedules.push hash
     end
