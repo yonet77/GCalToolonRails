@@ -1,0 +1,21 @@
+
+<div id="login_box" align="center">
+<h2>ログイン</h2>
+<hr>
+
+<% form_tag session_path do -%>
+<p><%= label_tag 'ログインＩＤ' %><br/>
+<%= text_field_tag 'login', @login %></p>
+
+<p><%= label_tag 'パスワード' %><br/>
+<%= password_field_tag 'password', nil %></p>
+
+<!-- Uncomment this if you want this functionality
+<p><%= label_tag 'remember_me', 'Remember me' %>
+<%= check_box_tag 'remember_me', '1', @remember_me %></p>
+-->
+
+<p><%= submit_tag 'ログイン' %></p>
+<%= link_to '新規登録', :controller=>:users, :action=>:new %>
+<% end -%>
+</div>

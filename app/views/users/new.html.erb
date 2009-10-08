@@ -1,0 +1,26 @@
+<div id="signup_box" align="center">
+<h2>新規登録</h2>
+<hr>
+<% @user.password = @user.password_confirmation = nil %>
+
+<%= error_messages_for :user %>
+<% form_for :user, :url => users_path do |f| -%>
+<p><%= label_tag 'ログインＩＤ' %><br/>
+<%= f.text_field :login %></p>
+
+<p><%= label_tag '名前' %><br/>
+<%= f.text_field :name %></p>
+
+<p><%= label_tag 'E-mail' %><br/>
+<%= f.text_field :email %></p>
+
+<p><%= label_tag 'パスワード' %><br/>
+<%= f.password_field :password %></p>
+
+<p><%= label_tag 'パスワード再確認', 'パスワード再確認' %><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<p><%= submit_tag '新規登録' %></p>
+<%= link_to 'ログイン画面', :controller=>:sessions, :action=>:new %>
+<% end -%>
+</div>

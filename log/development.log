@@ -1,0 +1,195 @@
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2009-10-08 00:31:01) [GET]
+Completed in 1031ms (View: 46, DB: 0) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mSQL (1625.0ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;36;1mSQL (156.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20091007170941)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (797.0ms)[0m   [0mCREATE TABLE "users" ("id" serial primary key, "login" character varying(40), "name" character varying(100) DEFAULT E'', "email" character varying(100), "crypted_password" character varying(40), "salt" character varying(40), "created_at" timestamp, "updated_at" timestamp, "remember_token" character varying(40), "remember_token_expires_at" timestamp, "activation_code" character varying(40), "activated_at" timestamp, "state" character varying(255) DEFAULT E'passive', "deleted_at" timestamp) [0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091007170941')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreatePasswords (20091007174602)
+  [4;35;1mSQL (16.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mCREATE TABLE "passwords" ("id" serial primary key, "user_id" integer, "reset_code" character varying(255), "expiration_date" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091007174602')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-08 12:48:12) [GET]
+Rendering sessions/new
+Completed in 4703ms (View: 4703, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-10-08 12:48:25) [GET]
+Rendering users/new
+Completed in 31ms (View: 15, DB: 0) | 200 OK [http://localhost/signup]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-08 12:48:36) [GET]
+Rendering sessions/new
+Completed in 0ms (View: 0, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-08 12:58:31) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-08 12:58:52) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 15ms (View: 0, DB: 16) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-10-08 13:00:30) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 31ms (View: 31, DB: 0) | 200 OK [http://localhost/signup]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-08 13:00:38) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 0ms (View: 0, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-08 13:01:35) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-10-08 13:01:36) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 16ms (View: 16, DB: 16) | 200 OK [http://localhost/signup]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#show (for 127.0.0.1 at 2009-10-08 13:01:38) [GET]
+
+ActionController::UnknownAction (No action responded to show. Actions: create, destroy, and new):
+  C:/Local/Ruby/ruby_1.8.6.2/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  C:/Local/Ruby/ruby_1.8.6.2/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  C:/Local/Ruby/ruby_1.8.6.2/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  C:/Local/Ruby/ruby_1.8.6.2/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  C:/Local/Ruby/ruby_1.8.6.2/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  C:/Local/Ruby/ruby_1.8.6.2/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  C:/Local/Ruby/ruby_1.8.6.2/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  C:/Local/Ruby/ruby_1.8.6.2/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  C:/Local/Ruby/ruby_1.8.6.2/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  C:/Local/Ruby/ruby_1.8.6.2/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-08 13:02:29) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 15ms (View: 15, DB: 0) | 200 OK [http://localhost/session/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-10-08 13:02:31) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 31ms (View: 16, DB: 0) | 200 OK [http://localhost/signup]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-08 13:02:33) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 0ms (View: 0, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-10-08 13:02:35) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/signup]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-08 13:02:36) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-10-08 13:02:37) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 31ms (View: 15, DB: 0) | 200 OK [http://localhost/signup]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-10-08 13:02:39) [GET]
+Rendering template within layouts/sessions
+Rendering sessions/new
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'unicode'[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-10-08 13:33:52) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 16ms (View: 16, DB: 0) | 200 OK [http://localhost/signup]
