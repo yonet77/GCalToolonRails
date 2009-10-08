@@ -1,1 +1,7 @@
 
+<h3>■Google Calendarのスケジュール取得■</h3>
+
+<% form_tag url_for(:controller=>:gcal, :action=>:auth_gcal, :yyyymmdd=>"2009-10-01") do -%>
+
+	<%= submit_tag "Go!" %>
+<% end -%>
