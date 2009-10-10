@@ -1,5 +1,6 @@
 
-<%= link_to 'CSV', :action=>:export, :data=>@lists, :method=>:post %>
+<%= link_to 'CSV出力', :action=>:export, :data=>@lists, :method=>:post %>　|　
+<%= link_to '戻る', :action=>:index %>
 <br><br>
 <% @lists.each_with_index do |e, idx| %>
   (#<%= idx %>) タイトル：<%= e[:title] %><br>

@@ -40,6 +40,11 @@ module CalendarDateSelect
       :time => " %H:%M",
       :javascript_include => "format_italian"
     },
+    :japanese => {
+      :date => "%Y/%m/%d",
+      :time => " %H:%M",
+      :javascript_include => "format_japanese"
+    },
     :db => {
       :date => "%Y-%m-%d",
       :time => " %H:%M",
@@ -72,7 +77,9 @@ module CalendarDateSelect
   #   puts CalendarDateSelect.format[:date]
   #     => "%d/%m/%Y"
   def self.format
-    @format ||= FORMATS[:natural]
+    #@format ||= FORMATS[:natural]
+    # デフォルトフォーマットをjapaneseに変更
+    @format ||= FORMATS[:japanese]
   end
 
   # Set the format.  To see a list of available formats, CalendarDateSelect::FORMATS.keys, or open lib/calendar_date_select/calendar_date_select.rb
