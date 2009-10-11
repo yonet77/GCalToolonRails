@@ -2,6 +2,7 @@
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
+  include GoogleCal
   
   skip_before_filter :login_required
 
@@ -32,6 +33,10 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
+    
+    # セッションを無効にする
+    destroy_gcal_session
+    
     flash[:notice] = "ログアウトしました。"
     redirect_back_or_default('/login')
   end

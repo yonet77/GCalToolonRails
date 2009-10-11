@@ -24,6 +24,8 @@ class GcalController < ApplicationController
     puts 'schedule!'
     puts '--------------------------------'
     
+    create_gcal_session
+    
     @lists = get_googlecal_schedule(params[:yyyymmdd])
   end
 
@@ -32,7 +34,7 @@ class GcalController < ApplicationController
     puts 'export!'
     puts '--------------------------------'
     
-    data = params[:data]
+    data = get_googlecal_schedule(params[:yyyymmdd])
     csv_text = make_csv_text(data)
     
     send_data(csv_text, :type=>'text/csv', :filename=>"export.csv")
