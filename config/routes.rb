@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
   map.resources :users, :member => { :suspend => :put, :unsuspend => :put, :purge => :delete }
   map.gcal '/gcal', :controller=> 'gcal', :action => 'index'
+  map.admin '/admin', :controller=> 'admin', :action => 'index'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -2,6 +2,7 @@ class GcalController < ApplicationController
   include GoogleCal
   include DataExport
   
+  
   def index
     puts '--------------------------------'
     puts 'Index!'
