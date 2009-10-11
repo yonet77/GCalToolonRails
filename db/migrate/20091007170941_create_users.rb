@@ -16,6 +16,8 @@ class CreateUsers < ActiveRecord::Migration
 
       t.column :state,                     :string, :null => :no, :default => 'passive'
       t.column :deleted_at,                :datetime
+      
+      t.column :admin_flg,                 :string, :default => '', :null => true
     end
     add_index :users, :login, :unique => true
   end

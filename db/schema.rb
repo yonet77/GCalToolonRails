@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20091007174602) do
     t.datetime "activated_at"
     t.string   "state",                                    :default => "passive"
     t.datetime "deleted_at"
+    t.string   "admin_flg",                                :default => ""
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
