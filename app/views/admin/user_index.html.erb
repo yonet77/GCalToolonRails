@@ -1,7 +1,28 @@
 
 <%= link_to "戻る", :controller=>:admin, :action=>:index %>
 <br>
-<h3>■User管理■</h3>
+<h3>■Userリスト■</h3>
 
+<table border=1>
+<tr>
+	<th></th>
+	<th>ログインID</th>
+	<th>名前</th>
+	<th>E-Mail</th>
+	<th>状態</th>
+</tr>
 
+<% @users.each do |u| %>
+<tr>
+	<td nowrap>
+		<%= link_to 'Edit', :controller=>:admin, :action=>:user_edit, :id=>u.id %>　｜ 
+		<%= link_to 'Delete', url_for(:controller=>:admin, :action=>:user_delete, :id=>u.id), :confirm=>'削除します。よろしいですか？' %>
+	</td>
+	<td><%= u.login %></td>
+	<td><%= u.name %></td>
+	<td><%= u.email %></td>
+	<td><%= u.state %></td>
+</tr>
+<% end %>
 
+</table>

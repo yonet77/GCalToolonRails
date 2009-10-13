@@ -1,0 +1,28 @@
+
+<%= link_to "戻る", :controller=>:admin, :action=>:user_index %>
+<br>
+<h3>■User Edit■</h3>
+
+<% form_for :user, @user, :url=>{:controller=>:admin, :action=>:user_save, :id=>@user.id} do |u| %>
+<table border=1>
+	<tr>
+		<td>ログインID：</td>
+		<td><%= u.text_field :login %></td>
+	</tr>
+	<tr>
+		<td>名前：</td>
+		<td><%= u.text_field :name %></td>
+	</tr>
+	<tr>
+		<td>E-mail：</td>
+		<td><%= u.text_field :email %></td>
+	</tr>
+	<tr>
+		<td>状態：</td>
+		<td><%= link_to "active化", :controller=>:users, :action=>:activate, :activation_code=>@user.activation_code %></td>
+	</tr>
+</table>
+
+<%= u.submit '更新' %>
+<% end %>
+

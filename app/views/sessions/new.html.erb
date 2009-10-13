@@ -19,3 +19,8 @@
 <%= link_to '新規登録', :controller=>:users, :action=>:new %>
 <% end -%>
 </div>
+<br>
+
+<div id="msg" style="text-align: center; color: blue;"><%= flash[:notice] %></div>
+<div id="msg" style="text-align: center; color: blue;"><%= flash[:error] %></div>
+
