@@ -45,17 +45,10 @@ Rails::Initializer.run do |config|
   config.active_record.observers = :user_observer
   
 	config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address => '',
-    :port => 587, # or 25
-    :domain => '',
-    :authentication => :login,
-    :user_name => '',
-    :password => ''
-  }
 end
 
 $ADMIN_EMAIL = 'takahiro-yonei@nextechcorp.com'
-$SERVICE_URL = 'http://localhost:3000'
+$SERVICE_URL = 'http://gcaltoolonrails.heroku.com'
 
