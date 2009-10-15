@@ -13,7 +13,7 @@ class AdminController < ApplicationController
     puts 'user_index!'
     puts '--------------------------------'
 		
-		@users = User.find(:all)
+		@users = User.find(:all, :order=>"id")
 	end
 	
 	def user_edit
