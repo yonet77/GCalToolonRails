@@ -75,11 +75,11 @@ module GoogleCal
       
       hash[:st_date] = adjust_utc_tokyo('UTC',e.st).strftime("%Y/%m/%d %H:%M").split(/ /,2)[0]
       hash[:st_time] = adjust_utc_tokyo('UTC',e.st).strftime("%Y/%m/%d %H:%M").split(/ /,2)[1]
-      hash[:st] = e.st
+      hash[:st] = adjust_utc_tokyo('UTC',e.st)
       
       hash[:en_date] = adjust_utc_tokyo('UTC',e.en).strftime("%Y/%m/%d %H:%M").split(/ /,2)[0]
       hash[:en_time] = adjust_utc_tokyo('UTC',e.en).strftime("%Y/%m/%d %H:%M").split(/ /,2)[1]
-      hash[:en] = e.en
+      hash[:en] = adjust_utc_tokyo('UTC',e.en)
       
       hash[:time] = (e.en-e.st) / (60*60)
       
