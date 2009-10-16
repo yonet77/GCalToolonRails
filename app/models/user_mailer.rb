@@ -17,7 +17,7 @@ class UserMailer < ActionMailer::Base
     def setup_email(user)
       @recipients  = "#{user.email}"
       @from        = "ADMINEMAIL"
-      @subject     = "[YOURSITE] "
+      @subject     = "[GoogleCalTool on Rails]"
       @sent_on     = Time.now
       @body[:user] = user
     end

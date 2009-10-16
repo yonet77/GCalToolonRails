@@ -39,7 +39,7 @@ module GoogleCal
     GoogleCalendar::AuthSubUtil.revoke_session_token(session[:token])
 	end
 
-  def get_googlecal_schedule(yyyymm = Time.now.localtime.beginning_of_month.strftime("%Y-%m-%d"))
+  def get_googlecal_schedule(yyyymmdd = Time.now.getutc.beginning_of_month.strftime("%Y-%m-%d"))
     puts '--------------------------------'
     puts 'get_googlecal_schedule!'
     puts '--------------------------------'
@@ -47,16 +47,19 @@ module GoogleCal
     
     srv = GoogleCalendar::ServiceAuthSub.new(session[:token])
     cal = GoogleCalendar::Calendar.new(srv)
-
-    from = yyyymm.to_time(:local)
+    
+    from = adjust_utc_tokyo('TOKYO', yyyymmdd.to_time(:utc))
     to = from.next_month
-
-    time_from = from.utc.strftime("%Y-%m-%dT%X")
-    time_to = to.utc.strftime("%Y-%m-%dT%X")
-
+    
+    puts '----------------'
+    p 'from: ' + from.to_s
+    
+    time_from = from.strftime("%Y-%m-%dT%X")
+    time_to = to.strftime("%Y-%m-%dT%X")
+    
     # イベントを取得
     events = cal.events(:'start-min'=>time_from, :'start-max'=>time_to, :'max-results'=>300)
-
+    
     schedules = []
     events.each do |e|
       hash = HashWithIndifferentAccess.new
@@ -70,22 +73,37 @@ module GoogleCal
       hash[:desc] = e.desc
       hash[:where] = e.where
       
-      hash[:st_date] = e.st.localtime.strftime("%Y/%m/%d %H:%M").split(/ /,2)[0]
-      hash[:st_time] = e.st.localtime.strftime("%Y/%m/%d %H:%M").split(/ /,2)[1]
+      hash[:st_date] = adjust_utc_tokyo('UTC',e.st).strftime("%Y/%m/%d %H:%M").split(/ /,2)[0]
+      hash[:st_time] = adjust_utc_tokyo('UTC',e.st).strftime("%Y/%m/%d %H:%M").split(/ /,2)[1]
       hash[:st] = e.st
       
-      hash[:en_date] = e.en.localtime.strftime("%Y/%m/%d %H:%M").split(/ /,2)[0]
-      hash[:en_time] = e.en.localtime.strftime("%Y/%m/%d %H:%M").split(/ /,2)[1]
+      hash[:en_date] = adjust_utc_tokyo('UTC',e.en).strftime("%Y/%m/%d %H:%M").split(/ /,2)[0]
+      hash[:en_time] = adjust_utc_tokyo('UTC',e.en).strftime("%Y/%m/%d %H:%M").split(/ /,2)[1]
       hash[:en] = e.en
       
       hash[:time] = (e.en-e.st) / (60*60)
       
       schedules.push hash
     end
-
-    #return events
+    
     return schedules
   end
-
+  
+  
+  def adjust_utc_tokyo(from, time)
+  	# 東京とUTCの時差
+  	diff_hour = 9
+  	
+  	adjust_time = 0
+  	case from
+  		when 'UTC'
+  			adjust_time = diff_hour*60*60
+  		when 'TOKYO'
+  			adjust_time = -1*diff_hour*60*60
+  		else
+  			
+  	end
+  	return time + adjust_time
+  end
   
 end
