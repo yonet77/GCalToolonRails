@@ -13,7 +13,8 @@ module GoogleCal
     next_url = url_for(:controller=>:gcal, :action=>:get_schedule, :yyyymmdd=>yyyymmdd)
     #scope_url = GoogleCalendar::AuthSubUtil::CALENDAR_SCOPE
     # ネク知恵用にカレンダースコープを設定
-    scope_url = "http://calendar.google.com/a/nexchie.com/feeds/"
+    #scope_url = "http://calendar.google.com/a/nexchie.com/feeds/"
+    scope_url = "http://calendar.google.com/feeds/"
     request_url = GoogleCalendar::AuthSubUtil.build_request_url(next_url, scope_url, false, true)
 
     redirect_to request_url
